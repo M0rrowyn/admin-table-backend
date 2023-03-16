@@ -1,5 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const PORT = 3000;
 const JWT_SECRET_KEY = "test";
 
 const app = express();
@@ -37,6 +38,6 @@ function generateToken(payload) {
   return token;
 }
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
+app.listen(PORT, () => {
+  console.log(`Server started on PORT = ${PORT}`);
 });
