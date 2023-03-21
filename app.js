@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const PORT = 3000;
 const JWT_SECRET_KEY = "test";
@@ -13,6 +14,7 @@ const user = {
 };
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
 app.post("/login", (req, res) => {
@@ -28,8 +30,8 @@ app.post("/login", (req, res) => {
   };
   const token = generateToken(userData);
   return res.json({
-    token, 
-    user: userData
+    token,
+    user: userData,
   });
 });
 
