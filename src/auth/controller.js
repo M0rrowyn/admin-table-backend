@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = "test";
 
+exports.JWT_SECRET_KEY = JWT_SECRET_KEY;
+
 const user = {
   id: 1,
   login: "admin",
