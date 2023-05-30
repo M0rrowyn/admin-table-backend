@@ -1,13 +1,29 @@
 const express = require("express");
+const cors = require("cors");
+
+const { getProducts, updateProduct, getProductById, createProduct, deleteProduct } = require("./src/product/controller");
+const { login } = require("./src/auth/controller");
+
+const PORT = 3000;
+
 const app = express();
 
-app.get("/", (req, res) => {
-  res.json({
-    user: "admin",
-    password: "123"
-  });
-});
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
+app.post("/login", login);
+
+app.get("/product", getProducts);
+
+app.get("/product/:id", getProductById);
+
+app.put("/product/:id", updateProduct);
+
+app.post("/product", createProduct);
+
+app.delete("/product/:id", deleteProduct)
+
+app.listen(PORT, () => {
+  console.log(`Server started on PORT = ${PORT}`);
 });
